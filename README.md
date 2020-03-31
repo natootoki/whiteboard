@@ -23,6 +23,6 @@ mathモード
 
 ・BACKSPACEキー使えます。
 
-まだまだ普段通り打てない文字がたくさんあります。
+まだまだ普段通り打てない文字がたくさんあります。スマホじゃできないと思います。
 
 https://natootoki.github.io/whiteboard/index.html
