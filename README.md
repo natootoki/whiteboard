@@ -21,6 +21,8 @@ mathモード
 
 ・SHIFTキーは普段と同じような機能です。
 
+・BACKSPACEキー使えます。
+
 まだまだ普段通り打てない文字がたくさんあります。
 
 https://natootoki.github.io/whiteboard/index.html
