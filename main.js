@@ -268,6 +268,9 @@ var Widthz =[0,0,0,0,0,0,0,0,0,0,
 var char=0;
 var charx =[];
 var chary =[];
+var player_char=`w`;
+
+document.getElementById("player").innerText = player_char;
 
 //カーソルのオブジェクトを作成
 var player = new Object();
@@ -323,9 +326,15 @@ function keydownfunc( event ) {
   else if( key_code === 16 ) key.shift = true;
   else if( key_code === 242 & key.kana ) key.kana = false;
   else if( key_code === 242 & !key.kana ) key.kana = true;
-  else if( key_code === 17 & key.ctrl==='around' ) key.ctrl = 'write';
+  else if( key_code === 17 & key.ctrl==='around' ){
+    key.ctrl = 'write';
+    document.getElementById("player").innerText = "|";
+}
   else if( key_code === 17 & key.ctrl==='write' ) key.ctrl = 'math';
-  else if( key_code === 17 & key.ctrl==='math' ) key.ctrl = 'around';
+  else if( key_code === 17 & key.ctrl==='math' ){
+    key.ctrl = 'around';
+    document.getElementById("player").innerText = player_char;
+  }
   else if(key_code === 8 & char>=1){
     char-=1;
     var test1del = document.getElementById("chars"+char);
@@ -333,7 +342,7 @@ function keydownfunc( event ) {
     charx.pop();
     chary.pop();
   }
-  else if(key_code !== 229){
+  else if(key_code !== 229&key.ctrl!==`around`){
   //    if(keys[Number(key_code)]!==''){
         if(key.shift&!key.kana)test1.insertAdjacentHTML('afterbegin','<h1 id="chars'+char+'">'+Keys[Number(key_code)]+'</h1>');
         else if(key.shift&key.kana)test1.insertAdjacentHTML('afterbegin','<h1 id="chars'+char+'">'+Keysz[Number(key_code)]+'</h1>');
@@ -355,6 +364,20 @@ function keydownfunc( event ) {
     }
   }
   char+=1;
+  }
+  else if(key_code !== 229&key_code !== 32&key_code !== 8){
+    if(key.shift&!key.kana)player_char=Keys[Number(key_code)];
+    else if(key.shift&key.kana)player_char=Keysz[Number(key_code)];
+    else if(!key.shift&key.kana)player_char=keysz[Number(key_code)];
+    else player_char=keys[Number(key_code)];
+    document.getElementById("player").innerText = player_char;
+  }
+  else if(key_code===32){
+    test1.insertAdjacentHTML('afterbegin','<h1 id="chars'+char+'">'+player_char+'</h1>');
+    test2.insertAdjacentHTML('afterbegin','<style>#chars'+char+' {position: absolute;top: 0;left: 0;}</style>');
+    charx.push(player.x);
+    chary.push(player.y);
+    char+=1;
   }
 }
  
